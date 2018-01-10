@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:ImageEx1"
+             x:Class="ImageEx1.MainPage">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="20*" />
+            <RowDefinition Height="60*"/>
+            <RowDefinition Height="20*"/>
+        </Grid.RowDefinitions>
+        
+        
+        <Stepper x:Name="Stepper" 
+                 HorizontalOptions="Center" 
+                 VerticalOptions="Center"
+                 Minimum="1"
+                 Maximum="10"                 
+                 Value="{Binding Source={x:Reference Label}, Path=Text, StringFormat='Number:{0:F2}'}" 
+                 />
+        
+        <Label x:Name="Label"
+               VerticalOptions="Center"
+               HorizontalOptions="Start"               
+               Grid.Row="0"                
+               Grid.Column="2"/>
+        
+        <!--<Button Text="Prev" 
+                VerticalOptions="Center"
+                HorizontalOptions="End"/>-->
+
+        <ActivityIndicator x:Name="act" 
+                           IsRunning="{Binding Source={x:Reference Image}, Path=IsLoading}"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"                           
+                           Grid.Row="0" Grid.Column="1" />
+
+        <!--<Button Text="Next"
+                Image="left.png"
+                VerticalOptions="Center"
+                HorizontalOptions="Start"
+                Grid.Row="0" 
+                Grid.Column="2"/>-->
+
+        <Image x:Name="Image"
+               Source="{Binding Source={x:Reference Stepper}, Path=Value, StringFormat='https://placeimg.com/640/480/any/{0:F2}'}"
+               Grid.Row="1"
+               Aspect="AspectFill"
+               Grid.ColumnSpan="3" Grid.Column="0" />
+
+        <!--<Image x:Name="Image"
+
+               Source="https://placeimg.com/640/480/any/1"
+               Grid.Row="1"
+               Aspect="AspectFill"
+               Grid.ColumnSpan="3" Grid.Column="0" />-->
+
+
+    </Grid>
+
+</ContentPage>
